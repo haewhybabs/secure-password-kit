@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "declaration": true,
+        "outDir": "dist",
+        "moduleResolution": "node",
+        "ignoreDeprecations": "6.0",
+        "strict": true,
+        "esModuleInterop": true,
+        "types": [
+            "vitest/globals"
+        ]
+    }
+}
