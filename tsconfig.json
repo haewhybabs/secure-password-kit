@@ -4,12 +4,18 @@
         "module": "ESNext",
         "declaration": true,
         "outDir": "dist",
-        "moduleResolution": "node",
-        "ignoreDeprecations": "6.0",
         "strict": true,
+        "moduleResolution": "node",
         "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
         "types": [
+            "node",
             "vitest/globals"
         ]
-    }
+    },
+    "include": [
+        "src",
+        "tests"
+    ]
 }
