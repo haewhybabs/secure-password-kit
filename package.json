@@ -1,6 +1,6 @@
 {
   "name": "secure-password-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "All-in-one secure password toolkit: generation, validation, scoring, hashing, and verification",
   "license": "MIT",
   "author": "Ayobami Babalola",
