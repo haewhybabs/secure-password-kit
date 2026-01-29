@@ -8,14 +8,18 @@ It helps developers **generate**, **validate**, **score**, **hash**, and **verif
 
 ## ✨ Features
 
-* 🔒 Cryptographically secure password generation
-* ✅ Password strength validation with clear feedback
-* 📊 Entropy-based password scoring
-* 🧂 Secure password hashing using **Argon2id**
-* 🔍 Safe password verification
-* 🧠 Opinionated, security-first defaults
-* 🧩 TypeScript-first with full type definitions
-* 🌳 Tree-shakable, modern ESM/CJS support
+* 🔒 Cryptographically secure password generation  
+* ✅ Password strength validation with clear feedback  
+* 📊 Entropy-based password scoring  
+* 🧂 Secure password hashing using **Argon2id** (Node/browser only)  
+* 🔍 Safe password verification (Node/browser only)  
+* 🧠 Opinionated, security-first defaults  
+* 🧩 TypeScript-first with full type definitions  
+* 🌳 Tree-shakable, modern ESM/CJS support  
+* 🌐 Cross-environment support:  
+  - Node.js ✅  
+  - Browser / React ✅  
+  - React Native ⚠️ (password hashing not supported on-device)
 
 ---
 
@@ -47,9 +51,30 @@ import {
 
 ---
 
-## 🔑 Password Generation
+## 🌍 Environment Support
 
-Generate cryptographically secure passwords.
+| Feature                  | Node.js | Browser / React | React Native |
+|---------------------------|---------|----------------|--------------|
+| `generatePassword`        | ✅      | ✅              | ✅ (requires `react-native-get-random-values`) |
+| `scorePassword`           | ✅      | ✅              | ✅           |
+| `validatePassword`        | ✅      | ✅              | ✅           |
+| `hashPassword` / `verifyPassword` | ✅ | ✅              | ❌ backend-only |
+
+> **React Native setup for `generatePassword`**:  
+> 1. Install the polyfill:  
+> ```bash
+> npm install react-native-get-random-values
+> ```  
+> 2. Import it at the top of your entry file:  
+> ```ts
+> import "react-native-get-random-values";
+> ```  
+
+> **Important:** `hashPassword` / `verifyPassword` should always be done on the backend in React Native for security.
+
+---
+
+## 🔑 Password Generation
 
 ```ts
 const password = generatePassword({
@@ -68,8 +93,6 @@ console.log(password);
 
 ## ✅ Password Validation
 
-Check if a password meets recommended security criteria.
-
 ```ts
 const result = validatePassword("MyPassword123!");
 console.log(result);
@@ -85,8 +108,6 @@ console.log(result);
 ---
 
 ## 📊 Password Scoring
-
-Evaluate password entropy and strength.
 
 ```ts
 const score = scorePassword("MyPassword123!");
@@ -109,20 +130,23 @@ const isValid = await verifyPassword("MyPassword123!", hash);
 console.log(isValid); // true
 ```
 
+> **Note:** Only supported in Node.js and browser environments. Not supported on-device in React Native.
+
 ---
 
 ## 🛡 Security Considerations
 
-* Uses **Node.js crypto module** for randomness
-* Argon2id hashing with secure defaults
-* Timing-safe password verification
-* Safe defaults to prevent common password attacks
+* Uses **Node.js crypto module** for randomness (Node only)  
+* Argon2id hashing with secure defaults  
+* Timing-safe password verification  
+* Safe defaults to prevent common password attacks  
+* For React Native, only password generation, scoring, and validation are supported on-device. Hashing should be done on the backend.
 
 ---
 
 ## 📖 Documentation & Support
 
-* GitHub Repository: [https://github.com/haewhybabs/secure-password-kit](https://github.com/haewhybabs/secure-password-kit)
+* GitHub Repository: [https://github.com/haewhybabs/secure-password-kit](https://github.com/haewhybabs/secure-password-kit)  
 * Issues: [https://github.com/haewhybabs/secure-password-kit/issues](https://github.com/haewhybabs/secure-password-kit/issues)
 
 ---
@@ -136,3 +160,4 @@ console.log(isValid); // true
 ## 📄 License
 
 [MIT](LICENSE)
+
